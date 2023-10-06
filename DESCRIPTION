@@ -1,11 +1,34 @@
-Package: change-this-to-your-pkg-name
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Package: maccaindex
+Title: Visualization of Big Index Data And Miscellaneous Functions
+Version: 1.0.0
 Authors@R: 
-    person("First", "Last", , "your@email.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person(given = "Minh Khanh",
+           family = "Pham",
+           role = c("aut", "cre"),
+           email = "mpham0054@student.monash.edu",
+           comment = c(StudentID = "33602875"))
+Description: This package contains the 1) Raw data of Big Mac Index from 2011 to 2020; 2) A Shiny App which visualizes this dataset to ignite visual learning, 3) Customizable plotting function which takes in various inputs and display accordingly; and 4) A function can take in either one or two arguments and return a dataframe dependent on the types of the inputs (and how many imputs were called).
 License: MIT + file LICENSE
 Encoding: UTF-8
-Language: es
+Language: English
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 4.2.0)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    shinythemes,
+    shinyWidgets,
+    stringr
+Imports: 
+    magrittr,
+    shiny,
+    stats,
+    dplyr,
+    ggplot2,
+    plotly,
+    forcats
+LazyData: true
+Config/testthat/edition: 3
