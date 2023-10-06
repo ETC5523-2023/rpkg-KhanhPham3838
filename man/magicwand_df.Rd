@@ -40,14 +40,32 @@ A customized data frame based on the input vectors.
 A function that generates a customized data frame based on the input vectors.
 }
 \examples{
-# Single argument functionality
+
+# Single argument functionality for numerical vector
 vectorx <- c(1, 2, 3, 4, 5)
 result <- magicwand_df(vectorx)
 print(result)
 
-# Two-argument functionality
+# Single argument functionality for character/factor vector
+vectorx <- c("apple", "banana", "apple", "orange", "banana", "orange")
+result <- magicwand_df(vectorx)
+print(result)
+
+# Two-argument functionality for numerical vectors
 vectorx <- c(1, 2, 3)
-vectory <- c("apple", "banana", "apple")
+vectory <- c(4, 5, 6)
+result <- magicwand_df(vectorx, vectory)
+print(result)
+
+# Two-argument functionality for numerical and character/factor vectors
+vectorx <- c(1, 2, 1, 2, 1)
+vectory <- c("apple", "banana", "apple", "banana", "banana")
+result <- magicwand_df(vectorx, vectory)
+print(result)
+
+# Two-argument functionality for character/factor vectors
+vectorx <- c("apple", "banana", "apple", "orange", "banana")
+vectory <- c("red", "yellow", "red", "yellow", "red")
 result <- magicwand_df(vectorx, vectory)
 print(result)
 

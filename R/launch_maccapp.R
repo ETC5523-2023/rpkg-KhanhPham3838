@@ -2,6 +2,7 @@
 #'
 #' @description This function launches the Big Mac Shiny app.
 #' @return A Shiny App Interface
+#'
 #' @examples
 #' \dontrun{
 #' maccapp()

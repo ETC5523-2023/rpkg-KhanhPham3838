@@ -145,7 +145,7 @@ server <- function(input, output) {
     p <- ggplot(d, aes(y = Percentage, x = Date, colour = Currency), size = 0.5) +
           geom_line() +
           geom_point(size = 1) +
-          geom_hline(yintercept = 0, linetype = "dashed", color = "black", size = 1) +
+          geom_hline(yintercept = 0, linetype = "dashed", color = "black", linewidth = 1) +
           expand_limits(y = 0) +
           theme_bw(base_size = 14) +
           theme(legend.position = "none", text = element_text(size = 9)) +
