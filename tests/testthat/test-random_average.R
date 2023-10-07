@@ -53,5 +53,4 @@ test_that("magicwand_df returns the correct output for different inputs", {
   vectory <- NULL
   expected_output <- "Invalid Argument...please refer to the documentation at ?magicwand_df..."
   expect_equal(magicwand_df(vectorx, vectory), expected_output)
-
 })

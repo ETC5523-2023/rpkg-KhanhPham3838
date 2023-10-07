@@ -8,10 +8,8 @@
 
 library(readr)
 
-url <- 'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-12-22/big-mac.csv'
+url <- "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-12-22/big-mac.csv"
 
 macca_raw <- read_csv(url)
 
 usethis::use_data(macca_raw, overwrite = TRUE)
-
-

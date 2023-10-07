@@ -6,6 +6,8 @@
 \alias{maccaindex-package}
 \title{maccaindex: Visualization of Big Index Data And Miscellaneous Functions}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 This package contains the 1) Raw data of Big Mac Index from 2011 to 2020; 2) A Shiny App which visualizes this dataset to ignite visual learning, 3) Customizable plotting function which takes in various inputs and display accordingly; and 4) A function can take in either one or two arguments and return a dataframe dependent on the types of the inputs (and how many imputs were called).
 }
 \author{

@@ -1,5 +1,10 @@
-#' Magic Wand DataFrame
+#' magicwand_df
 #'
+#' @docType methods
+#'
+#' @title Magic Wand DataFrame
+#'
+#' @description
 #' A function that generates a customized data frame based on the input vectors.
 #'
 #' @importFrom stats cor quantile xtabs
@@ -51,7 +56,6 @@
 #' print(result)
 #'
 #' @export
-#'
 
 magicwand_df <- function(vectorx, vectory = NULL) {
   if (!is.null(vectorx) && is.null(vectory)) {
@@ -79,8 +83,10 @@ magicwand_df <- function(vectorx, vectory = NULL) {
       return(summary_df)
     } else if (is.character(vectorx) || is.factor(vectorx)) {
       count <- table(vectorx)
-      count_df <- data.frame(Values = names(count),
-                             Frequencies = as.numeric(count))
+      count_df <- data.frame(
+        Values = names(count),
+        Frequencies = as.numeric(count)
+      )
       return(count_df)
     } else {
       return("Invalid inputs...please refer to the documentation at ?magicwand_df...")
@@ -92,23 +98,22 @@ magicwand_df <- function(vectorx, vectory = NULL) {
         format_corr <- data.frame(Coefficient = correlation)
         return(format_corr)
       } else if (is.numeric(vectorx) &&
-                 (is.character(vectory) || is.factor(vectory))) {
+        (is.character(vectory) || is.factor(vectory))) {
         levels <- unique(vectory)
         mean_values <- tapply(vectorx, vectory, mean)
         mean_df_y_ver <- data.frame(Levels = levels, Mean = mean_values, row.names = NULL)
         return(mean_df_y_ver)
       } else if (is.numeric(vectory) &&
-                 (is.character(vectorx) || is.factor(vectorx))) {
+        (is.character(vectorx) || is.factor(vectorx))) {
         levels <- unique(vectorx)
         mean_values <- tapply(vectory, vectorx, mean)
         mean_df_x_ver <- data.frame(Levels = levels, Mean = mean_values, row.names = NULL)
         return(mean_df_x_ver)
       } else if (is.character(vectorx) ||
-                 is.factor(vectorx) && is.character(vectory) || is.factor(vectory)) {
+        is.factor(vectorx) && is.character(vectory) || is.factor(vectory)) {
         cross_table <- xtabs(~ vectorx + vectory)
         cross_table_df <- as.data.frame.matrix(cross_table)
         return(cross_table_df)
-
       } else {
         return(
           "Invalid data types...please refer to the documentation at ?magicwand_df..."
@@ -121,5 +126,3 @@ magicwand_df <- function(vectorx, vectory = NULL) {
     return("Invalid Argument...please refer to the documentation at ?magicwand_df...")
   }
 }
-
-

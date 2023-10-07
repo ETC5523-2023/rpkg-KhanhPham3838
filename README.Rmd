@@ -1,0 +1,81 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# maccaindex <a href="https://github.com/ETC5523-2023/rpkg-KhanhPham3838"><img src="man/figures/logo.png" align="right" height="138" /></a>
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/tidyverse/dplyr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidyverse/dplyr/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+## Purpose
+
+The goal of `maccaindex` package is to provide functions for visualizations and
+analysis of The Economist's Big Mac Index. We aim to spark the fire of learning economic theories through visual mediums. The package
+includes the original dataset for the user to play with, a customization
+plotting function, a numerical function to deal with multiple types of
+vectors, and a Shiny app that allow users to explore and understand the
+Big Mac Index data.
+
+## Installation
+
+You can install the development version of maccaindex from [GitHub](https://github.com/ETC5523-2023/rpkg-KhanhPham3838) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("ETC5523-2023/rpkg-KhanhPham3838")
+```
+
+## Overview
+
+`maccaindex` consists of the following functions:
+
+* `macca_raw` results in the Big Mac Index raw data.
+* `maccapp()` runs the accompanied Big Mac Index visualization R Shiny app.
+* `macca_inflation_plot()` plots the inflation rate of different countries based on Big Mac prices, in local or US prices depending on the user.
+* `magicwand_df()` invokes the various results that can be used to aid data analysis for a variety of data types. 
+
+## Usage
+
+```{r}
+library(maccaindex)
+
+data("macca_raw", package = "maccaindex")
+macca_raw
+
+# Single argument functionality for numerical vector
+vectorx <- c(1, 2, 3, 4, 5)
+result <- magicwand_df(vectorx)
+print(result)
+
+# Two-argument functionality for numerical and character/factor vectors
+vectorx <- c(1, 2, 1, 2, 1)
+vectory <- c("apple", "banana", "apple", "banana", "banana")
+result <- magicwand_df(vectorx, vectory)
+print(result)
+
+# Interactive plot ()
+# macca_inflation_plot("US")
+
+# The app is not ran in example as it would hinder render process
+# maccapp()
+```
+
+## Getting help
+
+If there are any questions or issues with the package, please send me an email at [Monash email](mpha0054@student.monash.edu). Thank you for reading, hope you enjoy my little package 😊.
+
+
+
+

@@ -2,7 +2,7 @@
 % Please edit documentation in R/macca_plot.R
 \name{macca_inflation_plot}
 \alias{macca_inflation_plot}
-\title{Generate an interactive plot of inflation rates of all countries from 2011-2020}
+\title{Interactive Inflation Plot}
 \usage{
 macca_inflation_plot(inflachoice)
 }

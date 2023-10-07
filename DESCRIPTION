@@ -21,7 +21,9 @@ Suggests:
     testthat (>= 3.0.0),
     shinythemes,
     shinyWidgets,
-    stringr
+    stringr,
+    kableExtra,
+    tibble
 Imports: 
     magrittr,
     shiny,

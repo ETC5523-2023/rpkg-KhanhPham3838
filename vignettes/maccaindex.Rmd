@@ -1,20 +1,255 @@
 ---
 title: "Visualization of Big Index Data And Miscellaneous Functions"
 output: rmarkdown::html_vignette
+description: >
+  This is a manual for the first time installers of maccaindex. You'll understand the 
+  concept of Purschasing Power Parity, Big Mac Index, as well as interesting visualization
+  of this data to ignite your curiousity. There is a numerical function which might come
+  in clutch for your data summarization needs!
 vignette: >
   %\VignetteIndexEntry{Visualization of Big Index Data And Miscellaneous Functions}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+  \usepackage[utf8]{inputenc}
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+options(tibble.print_min = 4L, tibble.print_max = 4L)
+library(maccaindex)
+library(kableExtra)
+library(tibble)
+set.seed(123456)
 ```
 
-```{r setup}
-library(maccaindex)
+## 👋 Introduction
+
+If you have ever been to a Macca before, you probably know what Big Mac
+is right...? After all it is a staple menu item that is available in
+more than 100 countries around the world (Amica 2020). However, most
+economic theories are usually foreign concepts to the average person,
+the **Big Mac Index** is of no exception as it was devised on the
+premise of **Purchasing Power Parity**, which aims to simplifies the
+idea of exchange rates.
+
+## 💭 How does it work?
+
+The Big Mac Index evaluates whether exchange rates are overvalued /
+undervalued by comparing the costs of Big Mac in different nations.
+Identical commodities ought to be priced the same everywhere; therefore,
+variances due to exchange rate fluctuations should be the only factor in
+price differences between the burgers. The indicator signals whether a
+currency is fairly valued by examining these variations in the Big Mac's
+costs against another country as a baseline (For example, the US). If
+the cost of a Big Mac differs dramatically from country to country, the
+exchange rate may not be where it should be. The index acts as a
+distinctive and simple indication to comprehend the valuation of world
+currencies and potential market imbalances.
+
+## 🎯 Goal
+
+The `maccaindex` package provides functions for visualizations and
+analysis of The Economist's Big Mac Index. We aim to spark the fire of learning economic theories through visual mediums. The package
+includes the original dataset for the user to play with, a customization
+plotting function, a numerical function to deal with multiple types of
+vectors, and a Shiny app that allow users to explore and understand the
+Big Mac Index data.
+
+## 🤖 Functionalities
+
+### `**macca_raw**` dataset
+
+#### Description
+
+This is the raw data of the Big Mac Index, downloaded the data from
+`tidytuesdayR`, available for download on their Github repository
+[here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-12-22/big-mac.csv).
+It contains the following variables:
+
+```{r ,echo=FALSE, message=FALSE, warning=FALSE}
+desc <-
+  tibble(
+    variable = c(
+      "date",
+      "iso_a3",
+      "currency_code",
+      "name",
+      "local_price",
+      "dollar_ex",
+      "dollar_price",
+      "USD_raw",
+      "EUR_raw",
+      "GBP_raw",
+      "JPY_raw",
+      "CNY_raw"
+    ),
+    class = c(
+      "date",
+      "character",
+      "character",
+      "double",
+      "double",
+      "double",
+      "double",
+      "double",
+      "double",
+      "double",
+      "double",
+      "double"
+    ),
+    description = c(
+      "Date of observation",
+      "Three-character [ISO 3166-1 country code][iso 3166-1]",
+      "Three-character [ISO 4217 currency code][iso 4217]",
+      "Country name",
+      "Price of a Big Mac in the local currency",
+      "Local currency units per dollar",
+      "Price of a Big Mac in dollars",
+      "Raw index, relative to the US dollar",
+      "Raw index, relative to the Euro",
+      "Raw index, relative to the British pound",
+      "Raw index, relative to the Japanese yen",
+      "Raw index, relative to the Chinese yuan"
+    )
+  )
+kbl(desc, table.attr = 'data-quarto-disable-processing="true"') |>
+  kable_styling(full_width = FALSE) |>
+  column_spec(1, width = "2cm", border_right = T) |>
+  column_spec(2, width = "3cm", border_right = T)
+```
+
+**Using the data**: 
+
+To access the data in as an object in the local
+environment, load it using the `data()` function. The object is named
+`macca_raw`.
+
+**Examples**: 
+
+```{r message=FALSE, warning=FALSE}
+data("macca_raw", package = "maccaindex")
+macca_raw
+```
+
+### `**magicwand_df(vectorx, vectory)**` function
+
+#### Description
+
+This function does a multitude of calculations and results, depending on
+the amount of inputs provided and the types of those inputs. 
+
+**These are the capabilities:**
+
+-   If `vectorx` is a numerical vector of at least 5 values, the function
+    returns a data frame with two columns:
+
+    -   Names: the names of the values (Minimum, Lower Hinge, Q1,
+        Median, Q3, Upper Hinge, Maximum)
+
+    -   Values: the corresponding summary values
+
+-   If `vectorx` is a character or factor vector, the function returns a
+    data frame with two columns:
+
+    -   Values: the unique values in vectorx
+
+    -   Frequencies: the frequencies of each value
+
+-   If both `vectorx` and `vectory` are numerical vectors of the same size,
+    the function returns a data frame with one column:
+
+    -   Coefficient: the correlation coefficient between vectorx and
+        vectory
+
+-   If one of `vectorx` or `vectory` is numerical and the other is a
+    character or factor vector, the function returns a data frame with
+    two columns:
+
+    -   Levels: the unique levels in the character/factor vector
+
+    -   Mean: the mean value of the numerical vector for each level
+
+-   If both `vectorx` and `vectory` are character/factor vectors, the
+    function returns a data frame representing the cross-tabulation of
+    `vectorx` and `vectory`
+    
+-   Invalid inputs for `vectorx` and `vectory` will be reported with an error                accordingly.
+
+**Examples**: 
+
+```{r}
+# Single argument functionality for numerical vector
+vectorx <- c(1, 2, 3, 4, 5)
+result <- magicwand_df(vectorx)
+print(result)
+```
+
+```{r}
+# Single argument functionality for character/factor vector
+vectorx <- c("apple", "banana", "apple", "orange", "banana", "orange")
+result <- magicwand_df(vectorx)
+print(result)
+```
+
+```{r}
+# Two-argument functionality for numerical vectors
+vectorx <- c(1, 2, 3)
+vectory <- c(4, 5, 6)
+result <- magicwand_df(vectorx, vectory)
+print(result)
+```
+
+```{r}
+# Two-argument functionality for numerical and character/factor vectors
+vectorx <- c(1, 2, 1, 2, 1)
+vectory <- c("apple", "banana", "apple", "banana", "banana")
+result <- magicwand_df(vectorx, vectory)
+print(result)
+```
+
+```{r}
+# Two-argument functionality for character/factor vectors
+vectorx <- c("apple", "banana", "apple", "orange", "banana")
+vectory <- c("red", "yellow", "red", "yellow", "red")
+result <- magicwand_df(vectorx, vectory)
+print(result)
+```
+
+### `**maccapp()**` function
+
+#### Description
+
+This function launches the Shiny app that visualizes the different aspects of the Big Mac Index data. This function accepts zero parameter.
+
+To run the app, just simply write the function as it is.
+
+**Example**: 
+
+```{r , eval=FALSE}
+# Run this code to launch the app
+maccapp()
+#> Listening on http://127.0.0.1:xxxx .... the app window should pop up
+```
+
+### `**macca_inflation_plot("inflachoice")**` function
+
+#### Description
+
+This function generates an interactive plot of inflation rates of all countries from 2011-2020 based on the Big Mac Index. The parameter provided must be a string, which then result in the appropriate currency usage depending on the input. 
+
+To plot for US prices, you can input `usd`, `us dollar`, or `us` (case-insensitive).
+
+**Example**:
+
+```{r , eval=FALSE}
+# Plotting inflation rate in terms of US prices
+macca_inflation_plot("usd")
+#> An interactive plot of the inflation rates over time for different countries, US price.
+
+# Plotting inflation rate in terms of local prices
+macca_inflation_plot("localprices")
+#> An interactive plot of the inflation rates over time for different countries, local price.
 ```
 

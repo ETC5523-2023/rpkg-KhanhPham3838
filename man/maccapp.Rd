@@ -12,6 +12,9 @@ A Shiny App Interface
 \description{
 This function launches the Big Mac Shiny app.
 }
+\details{
+maccapp
+}
 \examples{
 \dontrun{
 maccapp()

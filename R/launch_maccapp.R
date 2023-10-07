@@ -1,3 +1,5 @@
+#' maccapp
+#'
 #' @title Run the Big Mac Shiny App
 #'
 #' @description This function launches the Big Mac Shiny app.

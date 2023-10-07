@@ -1,12 +1,12 @@
-#'macca_raw
-#'@title The Macca Index
+#' macca_raw
+#' @title The Macca Index
 #'
-#'@description This is the data behind *The Economist*'s Big Mac Index, which consists
-#'of Big Mac prices from around the world spanning from 2011-2020.
+#' @description This is the data behind *The Economist*'s Big Mac Index, which consists
+#' of Big Mac prices from around the world spanning from 2011-2020.
 #'
-#'@docType data
+#' @docType data
 #'
-#'@format A dataframe with 19 variables and 1386 observations
+#' @format A dataframe with 19 variables and 1386 observations
 #' \describe{
 #'   \item{date}{Date of observation.}
 #'   \item{iso_a3}{Three-character [ISO 3166-1 country code](https://www.iso.org/iso-3166-country-codes.html).}
@@ -29,6 +29,6 @@
 #'   \item{CNY_adjusted}{Adjusted index, relative to the Chinese yuan.}
 #' }
 #'
-#'@author \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-12-22/big-mac.csv}{TidyTuesdayR Github Repo}
-#'@keywords data
+#' @author \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-12-22/big-mac.csv}{TidyTuesdayR Github Repo}
+#' @keywords data
 "macca_raw"
