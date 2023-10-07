@@ -59,7 +59,7 @@ Big Mac Index data.
 
 ## 🤖 Functionalities
 
-### `**macca_raw**` dataset
+### `macca_raw` dataset
 
 #### Description
 
@@ -133,7 +133,7 @@ data("macca_raw", package = "maccaindex")
 macca_raw
 ```
 
-### `**magicwand_df(vectorx, vectory)**` function
+### `magicwand_df(vectorx, vectory)` function
 
 #### Description
 
@@ -217,7 +217,7 @@ result <- magicwand_df(vectorx, vectory)
 print(result)
 ```
 
-### `**maccapp()**` function
+### `maccapp()` function
 
 #### Description
 
@@ -233,7 +233,7 @@ maccapp()
 #> Listening on http://127.0.0.1:xxxx .... the app window should pop up
 ```
 
-### `**macca_inflation_plot("inflachoice")**` function
+### `macca_inflation_plot("inflachoice")` function
 
 #### Description
 
